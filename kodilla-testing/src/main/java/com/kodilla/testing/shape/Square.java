@@ -21,4 +21,9 @@ class Square implements Shape {
     public double getA() {
         return side;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (field: %.2f)", getShapeName(), getField());
+    }
 }

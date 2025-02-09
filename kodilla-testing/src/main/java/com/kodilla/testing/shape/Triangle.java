@@ -27,4 +27,9 @@ class Triangle implements Shape {
     public double getHeightA() {
         return heightA;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (field: %.2f)", getShapeName(), getField());
+    }
 }

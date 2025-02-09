@@ -22,4 +22,9 @@ class Circle implements Shape {
     public double getRange() {
         return range;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (field: %.2f)", getShapeName(), getField());
+    }
 }

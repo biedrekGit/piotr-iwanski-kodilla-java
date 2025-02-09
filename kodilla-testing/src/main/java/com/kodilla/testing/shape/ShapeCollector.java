@@ -24,8 +24,8 @@ class ShapeCollector {
         return shapes.get(n);
     }
 
-    public List<Shape> showFigures() {
-        return shapes;
+    public String showFigures() {
+        return shapes.toString();
     }
 
     public int getShapesQuantity() {
@@ -37,5 +37,20 @@ class ShapeCollector {
         return "ShapeCollector{" +
                 "shapes=" + shapes +
                 '}';
+    }
+
+    public static void main(String[] args) {
+
+        ShapeCollector collector = new ShapeCollector();
+
+        Shape square = new Square(5.0);
+        Shape circle = new Circle(5.0);
+        Shape triangle = new Triangle(5.0,3.0);
+
+        collector.addFigure(square);
+        collector.addFigure(circle);
+        collector.addFigure(triangle);
+
+        System.out.println(collector.showFigures());
     }
 }

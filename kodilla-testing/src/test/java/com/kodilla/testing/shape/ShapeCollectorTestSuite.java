@@ -3,7 +3,6 @@ package com.kodilla.testing.shape;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @DisplayName("Shape Collector Suite")
 class ShapeCollectorTestSuite {
@@ -38,7 +37,7 @@ class ShapeCollectorTestSuite {
             shapeCollector.addFigure(square);
 
             //Then
-            Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
+            Assertions.assertEquals(square, shapeCollector.getFigure(0));
         }
 
         @Test
@@ -92,10 +91,11 @@ class ShapeCollectorTestSuite {
             shapeList.add(square);
 
             //When
-            List<Shape> shapeResultList = shapeCollector.showFigures();
+            String retrievedString = shapeCollector.showFigures();
+            String expectedString = shapeList.toString();
 
             //Then
-            Assertions.assertEquals(shapeList.toString(), shapeResultList.toString());
+            Assertions.assertEquals(expectedString, retrievedString);
         }
     }
 
@@ -111,7 +111,7 @@ class ShapeCollectorTestSuite {
             shapeCollector.addFigure(circle);
 
             //Then
-            Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
+            Assertions.assertEquals(circle, shapeCollector.getFigure(0));
         }
 
         @Test
@@ -165,10 +165,11 @@ class ShapeCollectorTestSuite {
             shapeList.add(circle);
 
             //When
-            List<Shape> shapeResultList = shapeCollector.showFigures();
+            String retrievedString = shapeCollector.showFigures();
+            String expectedString = shapeList.toString();
 
             //Then
-            Assertions.assertEquals(shapeList.toString(), shapeResultList.toString());
+            Assertions.assertEquals(expectedString, retrievedString);
         }
     }
 
@@ -184,7 +185,7 @@ class ShapeCollectorTestSuite {
             shapeCollector.addFigure(triangle);
 
             //Then
-            Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
+            Assertions.assertEquals(triangle, shapeCollector.getFigure(0));
         }
 
         @Test
@@ -238,10 +239,11 @@ class ShapeCollectorTestSuite {
             shapeList.add(triangle);
 
             //When
-            List<Shape> shapeResultList = shapeCollector.showFigures();
+            String retrievedString = shapeCollector.showFigures();
+            String expectedString = shapeList.toString();
 
             //Then
-            Assertions.assertEquals(shapeList.toString(), shapeResultList.toString());
+            Assertions.assertEquals(expectedString, retrievedString);
         }
     }
 
