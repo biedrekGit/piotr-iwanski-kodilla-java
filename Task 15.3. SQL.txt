@@ -1,0 +1,43 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(100)
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100),
+    DESCRIPTION VARCHAR(1024),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME) VALUES ('ToDo');
+
+INSERT INTO ISSUESLISTS (NAME) VALUES ('In progress');
+
+INSERT INTO ISSUESLISTS (NAME) VALUES ('Done');
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO) VALUES
+    (1, 'Zakupy spożywcze', 'Kupić mleko, chleb, jajka, makaron i warzywa na cały tydzień.', 2),
+    (1, 'Przygotowanie prezentacji', 'Skończyć prezentację na spotkanie zespołu w czwartek, dodać wykresy i notatki.', 4),
+    (1, 'Odebrać paczkę', 'Odebrać zamówienie z paczkomatu do 18:00.', 5),
+    (1, 'Ćwiczenia fizyczne', 'Wykonać 30 minut jogi i 15 minut treningu siłowego.', 1),
+    (1, 'Telefon do dentysty', 'Umówić wizytę kontrolną na przyszły tydzień.', 3),
+    (2, 'Zrobić zakupy', 'Lista zakupów: mleko, chleb, masło, jajka, warzywa.', 5),
+    (2, 'Napisać raport', 'Przygotować raport miesięczny dla działu sprzedaży do piątku.', 4),
+    (2, 'Zadzwonić do klienta', 'Skontaktować się z klientem w sprawie przedłużenia umowy.', 3),
+    (2, 'Odebrać buty z naprawy', 'Buty będą gotowe do odbioru po 14:00 w punkcie przy ul. Długiej.', 2),
+    (2, 'Zarezerwować hotel', 'Sprawdzić oferty hoteli w Krakowie na weekend 15-17 kwietnia.', 1),
+    (3, 'Przygotować prezentację', 'Uzupełnić slajdy o dane z pierwszego kwartału.', 4),
+    (3, 'Ustawić przypomnienie', 'Ustawić przypomnienie o wizycie u lekarza na poniedziałek 8:00.', 2),
+    (3, 'Zapisać się na kurs', 'Zarejestrować się na kurs online "Podstawy SQL" przed końcem miesiąca.', 4),
+    (3, 'Naprawić rower', 'Sprawdzić hamulce, napompować koła i przesmarować łańcuch.', 1),
+    (3, 'Zrobić kopię zapasową', 'Zarchiwizować najnowsze projekty i wysłać kopię na dysk zewnętrzny.', 2);
+
+COMMIT;

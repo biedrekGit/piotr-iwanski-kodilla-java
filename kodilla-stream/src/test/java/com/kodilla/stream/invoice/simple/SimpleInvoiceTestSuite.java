@@ -19,4 +19,17 @@ public class SimpleInvoiceTestSuite {
         //Then
         assertEquals(108.975, invoice.getValueToPay(), 0.001);
     }
+
+    @Test
+    void testGetValue() {
+        //Given
+        SimpleItem simpleItem1 = new SimpleItem(new SimpleProduct("Product 1", 25.4), 4.0);
+        SimpleItem simpleItem2 = new SimpleItem(new SimpleProduct("Product 2", 45.5), 2.0);
+        SimpleItem simpleItem3 = new SimpleItem(new SimpleProduct("Product 3", 35.5), 6.0);
+        //When & Then
+        assertEquals(101.6, simpleItem1.getValue());
+        assertEquals(91.0, simpleItem2.getValue());
+        assertEquals(213.0, simpleItem3.getValue());
+
+    }
 }
