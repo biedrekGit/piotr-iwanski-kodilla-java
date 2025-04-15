@@ -1,12 +1,12 @@
 package com.kodilla.hibernate.invoice;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ITEM")
+@Table(name = "ITEMS")
 public class Item {
 
     private int id;
@@ -26,48 +26,51 @@ public class Item {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "ITEM_ID", unique = true)
     public int getId() {
         return id;
     }
 
+    private void setId(int id) {
+        this.id = id;
+    }
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    private void setProduct(Product product) {
         this.product = product;
     }
 
-    @Column(name = "ITEM_PRICE")
+    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    private void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    @Column(name = "ITEM_QUANTITY")
+    @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    private void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    @Column(name = "ITEM_VALUE")
+    @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
+    private void setValue(BigDecimal value) {
         this.value = value;
     }
 }

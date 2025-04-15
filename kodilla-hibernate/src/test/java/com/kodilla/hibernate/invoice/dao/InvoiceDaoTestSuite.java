@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -24,9 +25,7 @@ class InvoiceDaoTestSuite {
         Product table = new Product("table");
         Item tables1 = new Item(table, new BigDecimal(250), 5, new BigDecimal(1250));
         Item tables2 = new Item(table, new BigDecimal(400), 4, new BigDecimal(1600));
-        Invoice invoiceTest = new Invoice("Invoice 001");
-        invoiceTest.getItems().add(tables1);
-        invoiceTest.getItems().add(tables2);
+        Invoice invoiceTest = new Invoice("Invoice 001", List.of(tables1, tables2));
         //When
         invoiceDao.save(invoiceTest);
         int invoiceId = invoiceTest.getId();
