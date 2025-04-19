@@ -6,6 +6,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 
+@NamedQuery(
+        name = "Employee.retrieveEmployeeByLastname",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {

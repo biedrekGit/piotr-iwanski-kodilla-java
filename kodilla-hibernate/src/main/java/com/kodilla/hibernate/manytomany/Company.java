@@ -6,6 +6,12 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+    name = "Company.retrieveCompanyByThreeInitials",
+    query = "SELECT * FROM COMPANIES" +
+            " WHERE COMPANY_NAME LIKE :INITIALS",
+    resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
